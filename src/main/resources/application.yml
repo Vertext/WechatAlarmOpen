@@ -1,0 +1,46 @@
+
+server:
+  port: 80
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/wechat_alarm?serverTimezone=UTC
+    username: root
+    password: admin
+
+  jpa:
+    properties:
+      hibernate:
+        hbm2ddl:
+          auto:  update
+        dialect:  org.hibernate.dialect.MySQL5InnoDBDialect
+    show-sql: true
+
+  thymeleaf:
+    cache: false
+
+logging:
+  path: /var/wechatAlarm/log
+  level:
+    com.alarm.wechat: DEBUG
+    org.springframework.web: INFO
+    org.hibernate:  ERROR
+
+oAuth:
+  github:
+    state: 1h8k68be244kxdeb2k91sdfasdfads230f40817feeekjm
+    clientId:  6d2d6e64dd13d1b89c74
+    clientSecret: 6d59917a82d08ee3999f2d57dc5d7696ed062f0b
+
+#demo.host: http://wechatalarm.app.yyuap.com
+demo.host:  http://du299j.natappfree.cc
+#demo.host:  http://wechatalarm.¿á¿áµÄ³Ï.online
+
+wechat:
+  config:
+    templateId: M_9ptmAWBbWDGWROPsBoxc2yAWopy2LnXMAMEv6FRnQ
+    appid: wx1ff6a14a365283a6
+    appsecret: 35375a10571e6bb14b9ab3896e7cdada
+    accessTokenUrl: https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=APPID&secret=APPSECRET
+
