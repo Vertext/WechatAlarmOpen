@@ -4,10 +4,9 @@ import org.scribe.builder.api.DefaultApi20;
 import org.scribe.model.OAuthConfig;
 import org.scribe.utils.OAuthEncoder;
 
+
 /**
- * @Description:
- * @Author: zhangchengk
- * @Date: 2019-05-18 14:06
+ * @author PLA
  */
 public class GithubApi extends DefaultApi20 {
 

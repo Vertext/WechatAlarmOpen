@@ -6,13 +6,16 @@ import org.scribe.model.Token;
 import org.scribe.model.Verifier;
 import org.scribe.oauth.OAuthService;
 
-public abstract class OAuthServiceDeractor implements OAuthService {
+/**
+ * @author PLA
+ */
+public abstract class AbstractOauthServiceDeractor implements OAuthService {
 
   private final OAuthService oAuthService;
   private final String oAuthType;
   private final String authorizationUrl;
 
-  public OAuthServiceDeractor(OAuthService oAuthService, String type) {
+  public AbstractOauthServiceDeractor(OAuthService oAuthService, String type) {
     super();
     this.oAuthService = oAuthService;
     this.oAuthType = type;
@@ -44,7 +47,7 @@ public abstract class OAuthServiceDeractor implements OAuthService {
     return oAuthService.getAuthorizationUrl(requestToken);
   }
 
-  public String getoAuthType() {
+  String getoAuthType() {
     return oAuthType;
   }
 

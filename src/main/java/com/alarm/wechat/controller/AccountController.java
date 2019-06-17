@@ -1,6 +1,6 @@
 package com.alarm.wechat.controller;
 
-import com.alarm.wechat.auth.OAuthServiceDeractor;
+import com.alarm.wechat.auth.AbstractOauthServiceDeractor;
 import com.alarm.wechat.auth.OAuthServices;
 import com.alarm.wechat.domain.SendUrl;
 import com.alarm.wechat.domain.User;
@@ -57,14 +57,14 @@ public class AccountController {
   }
 
   @RequestMapping(value = "/oauth/{type}/callback", method = RequestMethod.GET)
-  public String claaback(@RequestParam(value = "code") String code,
+  public String callback(@RequestParam(value = "code") String code,
       @PathVariable(value = "type") String type,
       HttpServletRequest request, Model model) {
-    OAuthServiceDeractor oAuthService = oAuthServices.getOAuthService(type);
+    AbstractOauthServiceDeractor oAuthService = oAuthServices.getOAuthService(type);
     Token accessToken = oAuthService.getAccessToken(null, new Verifier(code));
     User oAuthInfo = oAuthService.getUser(accessToken);
-    User user = userRepository.findByOAuthTypeAndOAuthId(oAuthInfo.getoAuthType(),
-        oAuthInfo.getoAuthId());
+    User user = userRepository.findByOAuthTypeAndOAuthId(oAuthInfo.getOAuthType(),
+        oAuthInfo.getOAuthId());
     if (user == null) {
       model.addAttribute("oAuthInfo", oAuthInfo);
       user = userRepository.save(oAuthInfo);

@@ -2,7 +2,7 @@ package com.alarm.wechat.common;
 
 import static com.alarm.wechat.common.WeChatConstants.MESSAGE_TEXT;
 
-import com.alarm.wechat.domain.WXMessage;
+import com.alarm.wechat.domain.WechatMessage;
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.io.xml.DomDriver;
 import java.io.IOException;
@@ -44,14 +44,14 @@ public class MessageUtil {
     is.close();
     return map;
   }
-  private static String textMessageToXml(WXMessage wxMessage){
+  private static String textMessageToXml(WechatMessage wechatMessage){
     XStream xstream=new XStream(new DomDriver("UTF-8"));
-    xstream.alias("xml",wxMessage.getClass());
-    return xstream.toXML(wxMessage);
+    xstream.alias("xml", wechatMessage.getClass());
+    return xstream.toXML(wechatMessage);
   }
 
   public static String initText(String toUserName,String fromUserName,String content){
-    WXMessage text=new WXMessage();
+    WechatMessage text=new WechatMessage();
     text.setFromUserName(toUserName);
     text.setToUserName(fromUserName);
     text.setMsgType(MESSAGE_TEXT);

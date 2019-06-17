@@ -9,10 +9,10 @@ import org.springframework.stereotype.Service;
 @Service
 public class OAuthServices {
 
-  @Autowired List<OAuthServiceDeractor> oAuthServiceDeractors;
+  @Autowired List<AbstractOauthServiceDeractor> abstractOauthServiceDeractors;
 
-  public OAuthServiceDeractor getOAuthService(String type){
-    Optional<OAuthServiceDeractor> oAuthService = oAuthServiceDeractors.stream().filter(o -> o.getoAuthType().equals(type))
+  public AbstractOauthServiceDeractor getOAuthService(String type){
+    Optional<AbstractOauthServiceDeractor> oAuthService = abstractOauthServiceDeractors.stream().filter(o -> o.getoAuthType().equals(type))
         .findFirst();
     if(oAuthService.isPresent()){
       return oAuthService.get();
@@ -20,8 +20,8 @@ public class OAuthServices {
     return null;
   }
 
-  public List<OAuthServiceDeractor> getAllOAuthServices(){
-    return oAuthServiceDeractors;
+  public List<AbstractOauthServiceDeractor> getAllOAuthServices(){
+    return abstractOauthServiceDeractors;
   }
 
 }

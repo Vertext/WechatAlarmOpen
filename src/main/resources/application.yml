@@ -5,7 +5,7 @@ server:
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://127.0.0.1:3306/wechat_alarm?serverTimezone=UTC
+    url: jdbc:mysql://127.0.0.1:3306/wechat_alarm2?serverTimezone=UTC
     username: root
     password: admin
 
@@ -34,8 +34,8 @@ oAuth:
     clientSecret: 6d59917a82d08ee3999f2d57dc5d7696ed062f0b
 
 #demo.host: http://wechatalarm.app.yyuap.com
-demo.host:  http://du299j.natappfree.cc
-#demo.host:  http://wechatalarm.¿á¿áµÄ³Ï.online
+demo.host:  http://axdtna.natappfree.cc
+#demo.host:  http://wechatalarm.é…·é…·çš„è¯š.online
 
 wechat:
   config:

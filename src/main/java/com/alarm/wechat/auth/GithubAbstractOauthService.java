@@ -11,11 +11,14 @@ import org.scribe.model.Verb;
 import org.scribe.oauth.OAuthService;
 
 
-public class GithubOAuthService extends OAuthServiceDeractor {
+/**
+ * @author PLA
+ */
+public class GithubAbstractOauthService extends AbstractOauthServiceDeractor {
 
   private static final String PROTECTED_RESOURCE_URL = "https://api.github.com/user";
 
-  public GithubOAuthService(OAuthService oAuthService) {
+  GithubAbstractOauthService(OAuthService oAuthService) {
     super(oAuthService, OauthTypes.GITHUB);
   }
 
@@ -25,9 +28,9 @@ public class GithubOAuthService extends OAuthServiceDeractor {
     this.signRequest(accessToken, request);
     Response response = request.send();
     User user = new User();
-    user.setoAuthType(getoAuthType());
+    user.setOAuthType(getoAuthType());
     Object result = JSON.parse(response.getBody());
-    user.setoAuthId(JSONPath.eval(result, "$.id").toString());
+    user.setOAuthId(JSONPath.eval(result, "$.id").toString());
     return user;
   }
 

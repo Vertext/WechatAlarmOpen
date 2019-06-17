@@ -6,8 +6,11 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+/**
+ * @author PLA
+ */
 @Configuration
-public class OAuthConfig {
+public class OauthConfig {
 
   private static final String CALLBACK_URL = "%s/oauth/%s/callback";
 
@@ -24,8 +27,8 @@ public class OAuthConfig {
   }
 
   @Bean
-  public OAuthServiceDeractor getGithubOAuthService(){
-    return new GithubOAuthService(new ServiceBuilder()
+  public AbstractOauthServiceDeractor getGithubOAuthService(){
+    return new GithubAbstractOauthService(new ServiceBuilder()
         .provider(githubApi())
         .apiKey(githubClientId)
         .apiSecret(githubClientSecret)

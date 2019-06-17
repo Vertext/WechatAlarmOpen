@@ -4,12 +4,18 @@ import com.alarm.wechat.domain.AlarmMessage;
 import com.alarm.wechat.domain.SendUrl;
 import org.springframework.data.jpa.repository.JpaRepository;
 
+
 /**
- * @Description:
- * @Author: zhangchengk
- * @Date: 2019-05-22 11:19
+ * @author PLA
  */
 public interface AlarmMseeageRepository extends JpaRepository<AlarmMessage, Integer> {
 
+  /**
+   * 计数预警信息
+   * @param sendUrl url
+   * @param createtime 时间
+   * @param msg 信息
+   * @return int
+   * */
   int countAlarmMessageBySendUrlAndCreatetimeAfterAndMsg(SendUrl sendUrl,long createtime,String msg);
 }
